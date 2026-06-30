@@ -23,14 +23,14 @@ jobs:
       - name: Build and push StronaSebastian
         uses: docker/build-push-action@v5
         with:
-          context: ./frontend
+          context: .
           push: true
           tags: ghcr.io/fredo-js/stronasebastian-frontend:latest
 
       - name: Build and push server
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: ./server
           push: true
           tags: ghcr.io/fredo-js/stronasebastian-backend:latest
 
