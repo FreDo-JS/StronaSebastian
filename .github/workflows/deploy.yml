@@ -26,6 +26,8 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          build-args: |
+            VITE_API_URL=https://api.juniordevops.xyz
           tags: ghcr.io/fredo-js/stronasebastian-frontend:latest
 
       - name: Build and push server
