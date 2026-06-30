@@ -32,6 +32,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./server
+          file: ./server/Dockerfile
           push: true
           tags: ghcr.io/fredo-js/stronasebastian-backend:latest
 
