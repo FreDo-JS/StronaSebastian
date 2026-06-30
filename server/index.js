@@ -6,7 +6,8 @@ import 'dotenv/config'
 const app = express()
 const PORT = process.env.PORT || 3001
 
-app.use(cors({ origin: process.env.FRONTEND_URL || 'https://api.juniordevops.xyz' }))
+// app.use(cors({ origin: process.env.FRONTEND_URL || 'https://api.juniordevops.xyz' }))
+app.use(cors({ origin: 'https://juniordevops.xyz' }));
 app.use(express.json())
 
 const transporter = nodemailer.createTransport({
