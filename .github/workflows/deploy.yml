@@ -24,13 +24,17 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           push: true
+          build-args: |
+            VITE_API_URL=https://api.juniordevops.xyz
           tags: ghcr.io/fredo-js/stronasebastian-frontend:latest
 
       - name: Build and push server
         uses: docker/build-push-action@v5
         with:
           context: ./server
+          file: ./server/Dockerfile
           push: true
           tags: ghcr.io/fredo-js/stronasebastian-backend:latest
 
