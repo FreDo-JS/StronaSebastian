@@ -53,7 +53,7 @@ function Nav() {
       </nav>
 
       {/* Mobile overlay */}
-      <div className={`nav__overlay${open ? ' nav__overlay--open' : ''}`} aria-hidden={!open}>
+        <div className={`nav__overlay${open ? ' nav__overlay--open' : ''}`} aria-hidden={!open} {...(!open && { inert: '' })}>
         <div className="nav__overlay-header">
           <span className="nav__overlay-logo">Sebastian Michałek</span>
           <button className="nav__overlay-close" onClick={close} aria-label="Zamknij menu">
@@ -106,7 +106,7 @@ function Hero() {
         </p>
         <div className="hero__actions animate-in animate-in-delay-3">
           <a href="#kontakt" className="btn-primary">Darmowa wycena</a>
-          <a href="#realizacje" className="btn-ghost">Zobacz realizacje</a>
+          {/* <a href="#realizacje" className="btn-ghost">Zobacz realizacje</a> */}
         </div>
       </div>
 
