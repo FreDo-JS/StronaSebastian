@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import './App.css'
-import profile from './img/seba.jpg'
+
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
