@@ -200,8 +200,9 @@ function Arrow() {
 const NAV_LINKS = [
   { label: 'O mnie', href: '#o-mnie' },
   { label: 'Oferta', href: '#oferta' },
-  { label: 'Realizacje', href: '#realizacje' },
   { label: 'Jak pracuję', href: '#proces' },
+  { label: 'Realizacje', href: '#realizacje' },
+  { label: 'Cennik', href: '#cennik' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt' },
 ]
@@ -532,11 +533,91 @@ function Portfolio() {
   )
 }
 
+/* ───────── Pricing ───────── */
+
+const PACKAGES = [
+  {
+    tone: 'terracotta', name: 'Strona firmowa', from: true, price: '799', unit: '',
+    desc: 'Kompletna strona dla firmy, która chce wyglądać profesjonalnie i być łatwa do znalezienia.',
+    items: [
+      'Do 5 podstron (np. strona główna, o firmie, oferta, kontakt)',
+      'Indywidualny projekt graficzny',
+      'Wersja mobilna (responsywna)',
+      'Formularz kontaktowy',
+      'Podstawowa optymalizacja SEO',
+      'Integracja z mapą i Google Analytics',
+    ],
+  },
+  {
+    tone: 'sky', name: 'Landing page', from: false, price: '499', unit: '',
+    desc: 'Jedna skupiona strona stworzona pod konkretny cel — zapytania, zapisy albo kampanię reklamową.',
+    items: [
+      'Jedna strona sprzedażowa',
+      'Projekt pod jeden cel i wyraźne wezwanie do działania',
+      'Wersja mobilna (responsywna)',
+      'Formularz kontaktowy',
+      'Szybkie ładowanie',
+      'Przygotowanie pod kampanię Google Ads lub Meta',
+    ],
+  },
+  {
+    tone: 'lavender', name: 'Opieka, domena i hosting', from: false, price: '79', unit: '/ miesiąc',
+    desc: 'Wszystko, co potrzebne, żeby strona działała bez Twojej troski — od wdrożenia po bieżącą opiekę.',
+    items: [
+      'Wdrożenie i publikacja strony',
+      'Domena',
+      'Hosting',
+      'Aktualizacje i kopie zapasowe',
+      'Monitoring dostępności',
+      'Wsparcie techniczne',
+    ],
+  },
+]
+
+function Pricing({ onPick }) {
+  return (
+    <section className="section section--paper" id="cennik">
+      <div className="container">
+        <div className="head">
+          <span className="eyebrow" {...R(0)}>Cennik</span>
+          <h2 className="h2" {...R(0.05)}>Proste pakiety na dobry start</h2>
+          <p className="lead" {...R(0.1)}>
+            Wybierz gotowy pakiet albo poproś o wycenę indywidualną. Sklepy internetowe, SEO
+            i kampanie reklamowe wyceniam osobno, pod Twoje cele.
+          </p>
+        </div>
+        <div className="packages">
+          {PACKAGES.map((p, i) => (
+            <article className={`package package--${p.tone}`} key={p.name} {...R(i * 0.12)}>
+              <h3 className="package__name">{p.name}</h3>
+              <p className="package__price">
+                {p.from && <span className="package__from">od</span>}
+                {p.price} zł
+                {p.unit && <span className="package__unit">{p.unit}</span>}
+              </p>
+              <p className="package__desc">{p.desc}</p>
+              <ul>
+                {p.items.map(item => <li key={item}>{item}</li>)}
+              </ul>
+              <a href="#kontakt" className="btn btn--primary btn--block" onClick={() => onPick(p.name)}>
+                Wybieram ten pakiet
+              </a>
+            </article>
+          ))}
+        </div>
+        <p className="packages__note" {...R(0.1)}>
+          Ostateczna cena zależy od zakresu projektu — każda wycena jest bezpłatna.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 /* ───────── Why ───────── */
 
 function Why() {
   return (
-    <section className="section section--tight">
+    <section className="section">
       <div className="container split split--center">
         <div>
           <span className="eyebrow" {...R(0)}>Dlaczego warto</span>
@@ -663,6 +744,15 @@ function Contact({ interest, setInterest }) {
                   </label>
                 ))}
               </fieldset>
+              <fieldset className="chips">
+                <legend>Pakiet (opcjonalnie)</legend>
+                {PACKAGES.map(p => (
+                  <label key={p.name} className={`chip${interest.includes(p.name) ? ' chip--on' : ''}`}>
+                    <input type="checkbox" checked={interest.includes(p.name)} onChange={() => toggle(p.name)} />
+                    {p.name}
+                  </label>
+                ))}
+              </fieldset>
 
               <div className="field-row">
                 <div className="field">
@@ -722,8 +812,9 @@ function Footer() {
           <ul>
             <li><a href="#o-mnie">O mnie</a></li>
             <li><a href="#oferta">Oferta</a></li>
-            <li><a href="#realizacje">Realizacje</a></li>
             <li><a href="#proces">Jak pracuję</a></li>
+            <li><a href="#realizacje">Realizacje</a></li>
+            <li><a href="#cennik">Cennik</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
           </ul>
@@ -750,6 +841,7 @@ export default function App() {
         <Flow />
         <Process />
         <Portfolio />
+        <Pricing onPick={pick} />
         <Why />
         <FAQ />
         <Contact interest={interest} setInterest={setInterest} />
