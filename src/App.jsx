@@ -549,7 +549,7 @@ const PACKAGES = [
     ],
   },
   {
-    tone: 'sky', name: 'Landing page', from: false, price: '499', unit: '',
+    tone: 'cream', name: 'Landing page', from: false, price: '499', unit: '',
     desc: 'Jedna skupiona strona stworzona pod konkretny cel — zapytania, zapisy albo kampanię reklamową.',
     items: [
       'Jedna strona sprzedażowa',
@@ -561,7 +561,33 @@ const PACKAGES = [
     ],
   },
   {
-    tone: 'lavender', name: 'Opieka, domena i hosting', from: false, price: '79', unit: '/ miesiąc',
+    tone: 'sky', name: 'Sklep internetowy', from: true, price: '1899', unit: '',
+    desc: 'Sklep gotowy do sprzedaży — od projektu i płatności po wysyłkę i panel do zarządzania produktami.',
+    items: [
+      'Sklep internetowy gotowy do sprzedaży',
+      'Indywidualny projekt graficzny',
+      'Wersja mobilna (responsywna)',
+      'Płatności online',
+      'Konfiguracja wysyłki i dostaw',
+      'Panel zarządzania produktami i zamówieniami',
+      'Podstawowa optymalizacja SEO i analityka sprzedaży',
+    ],
+  },
+  {
+    tone: 'lavender', wide: true, name: 'SEO i Google Ads', from: false, price: '399', unit: 'obsługa',
+    note: '+ budżet reklamowy płatny osobno',
+    desc: 'Pozycjonowanie i kampanie Google Ads prowadzone przez jedną osobę — z jasnym raportem wyników.',
+    items: [
+      'Audyt i dobór słów kluczowych',
+      'Konfiguracja i prowadzenie kampanii Google Ads',
+      'Optymalizacja SEO strony',
+      'Śledzenie konwersji',
+      'Regularne raporty z wyników',
+      'Budżet reklamowy ustalany wspólnie i opłacany osobno',
+    ],
+  },
+  {
+    tone: 'mist', wide: true, name: 'Opieka, domena i hosting', from: false, price: '79', unit: '/ miesiąc',
     desc: 'Wszystko, co potrzebne, żeby strona działała bez Twojej troski — od wdrożenia po bieżącą opiekę.',
     items: [
       'Wdrożenie i publikacja strony',
@@ -582,19 +608,20 @@ function Pricing({ onPick }) {
           <span className="eyebrow" {...R(0)}>Cennik</span>
           <h2 className="h2" {...R(0.05)}>Proste pakiety na dobry start</h2>
           <p className="lead" {...R(0.1)}>
-            Wybierz gotowy pakiet albo poproś o wycenę indywidualną. Sklepy internetowe, SEO
-            i kampanie reklamowe wyceniam osobno, pod Twoje cele.
+            Wybierz gotowy pakiet albo poproś o wycenę indywidualną — przy większych projektach
+            i kampaniach dopasuję zakres do Twoich celów.
           </p>
         </div>
         <div className="packages">
           {PACKAGES.map((p, i) => (
-            <article className={`package package--${p.tone}`} key={p.name} {...R(i * 0.12)}>
+            <article className={`package package--${p.tone}${p.wide ? ' package--wide' : ''}`} key={p.name} {...R((i % 3) * 0.12)}>
               <h3 className="package__name">{p.name}</h3>
               <p className="package__price">
                 {p.from && <span className="package__from">od</span>}
                 {p.price} zł
                 {p.unit && <span className="package__unit">{p.unit}</span>}
               </p>
+              {p.note && <p className="package__note">{p.note}</p>}
               <p className="package__desc">{p.desc}</p>
               <ul>
                 {p.items.map(item => <li key={item}>{item}</li>)}
