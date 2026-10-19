@@ -200,6 +200,7 @@ function Arrow() {
 const NAV_LINKS = [
   { label: 'O mnie', href: '#o-mnie' },
   { label: 'Oferta', href: '#oferta' },
+  { label: 'Realizacje', href: '#realizacje' },
   { label: 'Jak pracuję', href: '#proces' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt' },
@@ -434,11 +435,108 @@ function Process() {
   )
 }
 
+/* ───────── Portfolio ───────── */
+
+// Przykładowe realizacje — podmień na własne projekty.
+// kind: 'site' | 'shop' | 'ads' (rodzaj makiety, gdy brak zdjęcia)
+// image: opcjonalna ścieżka do zrzutu ekranu (np. import z src/img) — zastępuje makietę
+// url: opcjonalny link do działającego projektu
+const PROJECTS = [
+  {
+    tone: 'terracotta', kind: 'site', category: 'Strona firmowa', title: 'Gabinet stomatologiczny',
+    desc: 'Profesjonalna strona dla lokalnej praktyki. Cel: więcej rejestracji online od nowych pacjentów.',
+    tags: ['Projekt graficzny', 'Wersja mobilna', 'SEO lokalne'], url: '', image: '',
+  },
+  {
+    tone: 'sky', kind: 'shop', category: 'Sklep internetowy', title: 'Pracownia ceramiki',
+    desc: 'Sklep dla rękodzielniczki z płatnościami online, galerią produktów i konfiguracją wysyłki.',
+    tags: ['E-commerce', 'Płatności', 'Analityka'], url: '', image: '',
+  },
+  {
+    tone: 'lavender', kind: 'ads', category: 'SEO i Google Ads', title: 'Biuro rachunkowe',
+    desc: 'Odświeżona strona wraz z kampanią w Google i pozycjonowaniem — z myślą o stałym napływie zapytań.',
+    tags: ['Google Ads', 'SEO', 'Śledzenie konwersji'], url: '', image: '',
+  },
+]
+
+function Mock({ kind }) {
+  if (kind === 'shop') {
+    return (
+      <div className="mock mock--shop">
+        <div className="mock__bar"><i /><i /><i /></div>
+        <div className="mock__grid">
+          {[0, 1, 2, 3, 4, 5].map(n => <span key={n} />)}
+        </div>
+      </div>
+    )
+  }
+  if (kind === 'ads') {
+    return (
+      <div className="mock mock--ads">
+        <div className="mock__bar"><i /><i /><i /></div>
+        <div className="mock__chart">
+          {[28, 40, 36, 58, 74, 92].map((h, n) => <span key={n} style={{ height: `${h}%` }} />)}
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div className="mock mock--site">
+      <div className="mock__bar"><i /><i /><i /></div>
+      <div className="mock__hero" />
+      <div className="mock__lines"><span /><span /><span /></div>
+    </div>
+  )
+}
+
+function Portfolio() {
+  return (
+    <section className="section" id="realizacje">
+      <div className="container">
+        <div className="head">
+          <span className="eyebrow" {...R(0)}>Realizacje</span>
+          <h2 className="h2" {...R(0.05)}>Wybrane projekty</h2>
+          <p className="lead" {...R(0.1)}>
+            Strony, sklepy i kampanie, które powstały z myślą o konkretnych celach biznesowych.
+          </p>
+        </div>
+        <div className="projects">
+          {PROJECTS.map((p, i) => (
+            <article className="project" key={p.title} {...R(i * 0.12)}>
+              <div className={`project__preview project__preview--${p.tone}`}>
+                {p.image
+                  ? <img src={p.image} alt={`Projekt: ${p.title}`} loading="lazy" />
+                  : <Mock kind={p.kind} />}
+              </div>
+              <div className="project__body">
+                <span className="badge">{p.category}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+                <ul className="project__tags">
+                  {p.tags.map(t => <li key={t}>{t}</li>)}
+                </ul>
+                {p.url && (
+                  <a href={p.url} className="link" target="_blank" rel="noopener noreferrer">
+                    Zobacz projekt <Arrow />
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="projects__cta" {...R(0.1)}>
+          <a href="#kontakt" className="btn btn--primary">Omów swój projekt <Arrow /></a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ───────── Why ───────── */
 
 function Why() {
   return (
-    <section className="section">
+    <section className="section section--tight">
       <div className="container split split--center">
         <div>
           <span className="eyebrow" {...R(0)}>Dlaczego warto</span>
@@ -624,6 +722,7 @@ function Footer() {
           <ul>
             <li><a href="#o-mnie">O mnie</a></li>
             <li><a href="#oferta">Oferta</a></li>
+            <li><a href="#realizacje">Realizacje</a></li>
             <li><a href="#proces">Jak pracuję</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
@@ -650,6 +749,7 @@ export default function App() {
         <Services onPick={pick} />
         <Flow />
         <Process />
+        <Portfolio />
         <Why />
         <FAQ />
         <Contact interest={interest} setInterest={setInterest} />
