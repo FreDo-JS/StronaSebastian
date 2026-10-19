@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import photo from './img/IMG_1995 (1).webp'
+import imgSmaki from './img/projekt-pracownia-smakow.jpg'
+import imgMeble from './img/projekt-sebik-meble.jpg'
+import imgTebby from './img/projekt-tebby.jpg'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
@@ -438,25 +441,26 @@ function Process() {
 
 /* ───────── Portfolio ───────── */
 
-// Przykładowe realizacje — podmień na własne projekty.
-// kind: 'site' | 'shop' | 'ads' (rodzaj makiety, gdy brak zdjęcia)
-// image: opcjonalna ścieżka do zrzutu ekranu (np. import z src/img) — zastępuje makietę
-// url: opcjonalny link do działającego projektu
+// image: zrzut ekranu z src/img (gdy brak — pokazuje się makieta z kodu, wybierana polem kind: 'site' | 'shop' | 'ads')
+// url: link do działającego projektu (przycisk „Zobacz projekt")
 const PROJECTS = [
   {
-    tone: 'terracotta', kind: 'site', category: 'Strona firmowa', title: 'Gabinet stomatologiczny',
-    desc: 'Profesjonalna strona dla lokalnej praktyki. Cel: więcej rejestracji online od nowych pacjentów.',
-    tags: ['Projekt graficzny', 'Wersja mobilna', 'SEO lokalne'], url: '', image: '',
+    tone: 'terracotta', category: 'Strona firmowa', title: 'Pracownia Wielu Smaków',
+    desc: 'Strona pracowni tortów i cateringu w Lesznie: oferta, galeria realizacji, przebieg zamówienia i formularz wyceny.',
+    tags: ['Galeria realizacji', 'Formularz wyceny', 'Wersja mobilna'],
+    url: 'https://pracowniasmakowvercel.vercel.app', image: imgSmaki,
   },
   {
-    tone: 'sky', kind: 'shop', category: 'Sklep internetowy', title: 'Pracownia ceramiki',
-    desc: 'Sklep dla rękodzielniczki z płatnościami online, galerią produktów i konfiguracją wysyłki.',
-    tags: ['E-commerce', 'Płatności', 'Analityka'], url: '', image: '',
+    tone: 'sky', category: 'Strona sklepu', title: 'Sebik — meble skandynawskie',
+    desc: 'Strona sklepu z meblami: kategorie, bestsellery, inspiracje z prawdziwych aranżacji i formularz kontaktowy.',
+    tags: ['Katalog produktów', 'Inspiracje', 'Formularz kontaktowy'],
+    url: 'https://meble-lac.vercel.app', image: imgMeble,
   },
   {
-    tone: 'lavender', kind: 'ads', category: 'SEO i Google Ads', title: 'Biuro rachunkowe',
-    desc: 'Odświeżona strona wraz z kampanią w Google i pozycjonowaniem — z myślą o stałym napływie zapytań.',
-    tags: ['Google Ads', 'SEO', 'Śledzenie konwersji'], url: '', image: '',
+    tone: 'lavender', category: 'Aplikacja internetowa', title: 'Tebby — mapa nauki',
+    desc: 'Aplikacja dla klas informatycznych: mapa tematów, testy, praktyka i panel — z postępem nauki aktualizowanym na żywo.',
+    tags: ['Aplikacja webowa', 'Postęp na żywo', 'Ciemny motyw'],
+    url: 'https://tebbypoznan.vercel.app/roadmap', image: imgTebby,
   },
 ]
 
@@ -498,7 +502,7 @@ function Portfolio() {
           <span className="eyebrow" {...R(0)}>Realizacje</span>
           <h2 className="h2" {...R(0.05)}>Wybrane projekty</h2>
           <p className="lead" {...R(0.1)}>
-            Strony, sklepy i kampanie, które powstały z myślą o konkretnych celach biznesowych.
+            Strony i aplikacje internetowe, które powstały z myślą o konkretnych celach.
           </p>
         </div>
         <div className="projects">
