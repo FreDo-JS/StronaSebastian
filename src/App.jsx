@@ -574,8 +574,8 @@ const PACKAGES = [
     ],
   },
   {
-    tone: 'lavender', wide: true, name: 'SEO i Google Ads', from: false, price: '399', unit: 'obsługa',
-    note: '+ budżet reklamowy płatny osobno',
+    tone: 'lavender', wide: true, name: 'SEO i Google Ads', from: false, price: '399', unit: '/ miesiąc',
+    note: 'obsługa + budżet reklamowy płatny osobno',
     desc: 'Pozycjonowanie i kampanie Google Ads prowadzone przez jedną osobę — z jasnym raportem wyników.',
     items: [
       'Audyt i dobór słów kluczowych',
