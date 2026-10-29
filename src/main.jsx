@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import Site from './Site.jsx'
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <Site path={window.location.pathname} />
+  </StrictMode>
 )
+
+// Zbudowane strony mają HTML wyrenderowany podczas builda (prerender) — wtedy tylko podpinamy obsługę.
+if (root.hasChildNodes()) hydrateRoot(root, app)
+else createRoot(root).render(app)
