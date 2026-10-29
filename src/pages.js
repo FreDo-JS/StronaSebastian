@@ -65,6 +65,10 @@ export const SERVICE_PAGES = [
         q: 'Czy sam zmienię treść na stronie?',
         a: 'Tak. Jeśli zależy Ci na samodzielnej edycji tekstów i zdjęć, przygotowuję stronę z prostym systemem zarządzania treścią, który nie wymaga znajomości programowania.',
       },
+      {
+        q: 'Czy strona internetowa za darmo to dobry pomysł dla firmy?',
+        a: `Strona internetowa za darmo, np. z kreatora, może wystarczyć do przetestowania pomysłu, ale firmie rzadko wystarcza. Darmowe plany często oznaczają adres w cudzej domenie, reklamy kreatora i ograniczone możliwości SEO, a za własną domenę i hosting i tak trzeba zapłacić. Przede wszystkim sama strona to tylko czubek góry lodowej. Pod powierzchnią są treści odpowiadające na pytania klientów, pozycjonowanie, wizytówka Google, szybkość i analityka. Strona, której nikt nie znajdzie, nie przynosi klientów, nawet jeśli nic za nią nie zapłaciłeś. Dlatego zaczynam od Twojego celu i dobieram do niego stronę — firmowa zaczyna się od ${price('Strona firmowa')} zł.`,
+      },
     ],
   },
   {

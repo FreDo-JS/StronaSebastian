@@ -73,6 +73,10 @@ const FAQS = [
     a: 'Google Ads daje ruch od razu, ale płacisz za każde kliknięcie. SEO buduje bezpłatną widoczność w wyniku dłuższej pracy. Najlepsze rezultaty daje połączenie obu — dobieram proporcje do Twojego budżetu i celów.',
   },
   {
+    q: 'Czy zamiast płacić, nie lepiej zrobić stronę internetową za darmo?',
+    a: 'Darmowy kreator bywa dobry na próbę, ale sama strona to tylko czubek góry lodowej. Żeby przynosiła klientów, potrzebuje jeszcze treści, SEO, własnej domeny, szybkiego działania i pomiaru wyników — a to w darmowym planie zwykle jest ograniczone albo płatne osobno. Dlatego liczy się cały pakiet, nie sama strona.',
+  },
+  {
     q: 'Jak rozliczany jest budżet reklamowy?',
     a: 'Budżet na reklamy ustalamy wspólnie, zanim ruszy kampania, i rozliczamy go osobno od mojej pracy. Wiesz zawsze, na co wydawane są pieniądze.',
   },
